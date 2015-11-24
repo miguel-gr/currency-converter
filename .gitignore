@@ -2,3 +2,4 @@
 # exclude target
 
 target
+.openshift/
