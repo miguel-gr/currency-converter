@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
  
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "com.mkyong.web" })
+@ComponentScan({ "org.currconv.web" })
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
  
 	@Override

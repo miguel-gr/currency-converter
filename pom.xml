@@ -12,6 +12,9 @@
 		<spring.version>3.2.13.RELEASE</spring.version>
 		<jstl.version>1.2</jstl.version>
 		<servletapi.version>3.1.0</servletapi.version>
+        <hibernate.version>4.3.6.Final</hibernate.version>
+        <mysql.connector.version>5.1.31</mysql.connector.version>
+        <testng.version>6.9.8</testng.version>
 	</properties>
 
 	<dependencies>
@@ -20,10 +23,25 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.connector.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
 		</dependency>
 		<!-- provided -->
 		<dependency>
@@ -38,6 +56,13 @@
           <version>1.0.0.Final</version>
           <type>pom</type>
           <scope>provided</scope>
+        </dependency>
+		<!-- test -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
         </dependency>
 	</dependencies>
 
@@ -74,25 +99,6 @@
 					<wtpContextName>curr-conv</wtpContextName>
 				</configuration>
 			</plugin>
-
-            <!--plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>exec-maven-plugin</artifactId>
-              <version>1.1.1</version>
-              <executions>
-                <execution>
-                  <id>create-ui</id>
-                  <phase>build</phase>
-                  <goals>
-                    <goal>exec</goal>
-                  </goals>
-                  <inherited>false</inherited>
-                </execution>
-              </executions>
-              <configuration>
-                <executable>installGui.sh</executable>
-              </configuration>
-            </plugin-->
             
 		</plugins>
 	</build>
@@ -107,14 +113,26 @@
      <build>
         <finalName>cconv</finalName>
         <plugins>
-          <plugin>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>2.1.1</version>
-            <configuration>
-              <outputDirectory>deployments</outputDirectory>
-              <warName>ROOT</warName>
-            </configuration>
-          </plugin>
+            <!-- Deployment config -->
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <outputDirectory>deployments</outputDirectory>
+                    <warName>ROOT</warName>
+                </configuration>
+            </plugin>
+            <!-- DB config management -->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <url>${env.OPENSHIFT_MYSQL_DB_URL}</url>
+                    <user>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user>
+                    <password>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</password>
+                </configuration>
+            </plugin>
         </plugins>
       </build>
     </profile>
