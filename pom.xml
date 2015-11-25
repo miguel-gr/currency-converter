@@ -128,7 +128,7 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>3.2.1</version>
                 <configuration>
-                    <url>jdbc:${env.OPENSHIFT_MYSQL_DB_URL}</url>
+                    <url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/cconv</url>
                     <user>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user>
                     <password>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</password>
                 </configuration>
