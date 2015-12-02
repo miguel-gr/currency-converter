@@ -7,7 +7,9 @@ import org.hibernate.criterion.Restrictions;
 import org.currconv.entities.user.User;
 import org.currconv.dao.AbstractDao;
 import org.currconv.dao.UserDao;
- 
+import org.springframework.stereotype.Repository;
+
+@Repository ("userDao")
 public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 
     public User findById(int id) {

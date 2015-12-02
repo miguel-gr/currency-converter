@@ -5,8 +5,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
 
 @Entity
 @Table(name = "APP_USER")
@@ -14,7 +18,15 @@ public class User implements java.io.Serializable {
 
 	private int userId;
 	private String username;
+	private String email;
 	private String passHash;
+    private Date dateOfBirth;
+    private String street;
+    private String zip;
+    private String city;
+    private String country;
+    private String password;
+    private String passwordVer;
     private static final String SALT="uwO4U=$(%6KfN0J(/v6UCKNX\"$&kvidvbAo0SU$&YoWqLf0jLhCEA(67S75Mu%!XFZ10M0%#rcMY";
 
 	public User() {
@@ -57,6 +69,79 @@ public class User implements java.io.Serializable {
 		this.username = username;
 	}
 
+	@Column(name = "email", unique = true, nullable = false, length = 50)
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Column(name = "date_of_birth", unique = false, nullable = false)
+	public Date getDateOfBirth() {
+		return this.dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	@Column(name = "street", unique = false, nullable = false)
+	public String getStreet() {
+		return this.street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	@Column(name = "zip", unique = false, nullable = false)
+	public String getZip() {
+		return this.zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+	@Column(name = "city", unique = false, nullable = false)
+	public String getCity() {
+		return this.city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	@Column(name = "country", unique = false, nullable = false)
+	public String getCountry() {
+		return this.country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+    @Transient
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.passHash = this.getHashPass(password);
+		this.password = password;
+	}
+
+    @Transient
+	public String getPasswordVer() {
+		return this.passwordVer;
+	}
+
+	public void setPasswordVer(String passwordVer) {
+		this.passwordVer = passwordVer;
+	}
+    
 	@Column(name = "passhash", nullable = false, length = 65)
 	public String getPassHash() {
 		return this.passHash;

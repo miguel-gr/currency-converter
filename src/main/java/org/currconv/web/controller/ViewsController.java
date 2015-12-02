@@ -6,14 +6,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.currconv.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
-public class CurrConvController{
+public class ViewsController {
+    
+    //@Autowired
+    //private UserService userService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
 
-		model.addAttribute("message", "Spring 3 MVC Hello World");
+		model.addAttribute("message", "Hello!");
 		return "index";
 
 	}
