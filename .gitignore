@@ -2,4 +2,5 @@
 # exclude target
 
 target
-.openshift/
+.openshift
+derby.log

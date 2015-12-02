@@ -1,21 +1,21 @@
 package org.currconv.entities.user;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Entity
 @Table(name = "APP_USER")
 public class User implements java.io.Serializable {
 
+	private static final long serialVersionUID = -401659923746661618L;
 	private int userId;
 	private String username;
 	private String email;
@@ -27,27 +27,18 @@ public class User implements java.io.Serializable {
     private String country;
     private String password;
     private String passwordVer;
-    private static final String SALT="uwO4U=$(%6KfN0J(/v6UCKNX\"$&kvidvbAo0SU$&YoWqLf0jLhCEA(67S75Mu%!XFZ10M0%#rcMY";
 
 	public User() {
 	}
 
-    private String getHashPass(final String original){
-        String salted = original+User.SALT;
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-            messageDigest.update(salted.getBytes());
-            byte[] digest = messageDigest.digest();
-            return String.format("%064x", new java.math.BigInteger(1, digest));
-        }catch(NoSuchAlgorithmException e){
-            // Should not happen
-        }
-        return null;
+    private String getEncodedPass(final String original){
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		return passwordEncoder.encode(original);
     }
     
 	public User(String username, String password) {
 		this.username = username;
-		this.passHash = this.getHashPass(password);
+		this.setPassword(password);
 	}
 
 	@Id
@@ -129,7 +120,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public void setPassword(String password) {
-		this.passHash = this.getHashPass(password);
+		this.passHash = this.getEncodedPass(password);
 		this.password = password;
 	}
 

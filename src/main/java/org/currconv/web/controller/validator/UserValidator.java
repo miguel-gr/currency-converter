@@ -1,14 +1,15 @@
 package org.currconv.web.controller.validator;
 
+import javax.mail.internet.InternetAddress;
+
+import org.apache.commons.lang3.StringUtils;
+import org.currconv.entities.app.Locations;
+import org.currconv.entities.user.User;
+import org.joda.time.DateTime;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-import org.springframework.stereotype.Component;
-import javax.mail.internet.InternetAddress;
-import org.joda.time.DateTime;
-import org.currconv.entities.app.Locations;
-import org.currconv.entities.user.User;
-import org.apache.commons.lang3.StringUtils;
 
 @Component
 public class UserValidator implements Validator {
@@ -16,11 +17,7 @@ public class UserValidator implements Validator {
     private String[] notEmpty = {
         "username", "email", "dateOfBirth", "street", "zip", "city", "country", "password", "passwordVer"
     };
-    private String[] alphaNumSpace = {
-        "street", "zip", "city"
-    };
-    
-	public boolean supports(Class<?> paramClass) {
+    public boolean supports(Class<?> paramClass) {
 		return User.class.equals(paramClass);
 	}
 

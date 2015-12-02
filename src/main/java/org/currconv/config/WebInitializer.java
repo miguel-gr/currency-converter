@@ -1,11 +1,6 @@
-package org.currconv.servlet3;
+package org.currconv.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-import org.currconv.config.SpringDBConfig;
-import org.currconv.config.SpringWebConfig;
-import org.currconv.config.SpringSecurityConfig;
-import org.currconv.config.SpringServicesConfig;
 
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -21,7 +16,8 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] { SpringDBConfig.class, SpringServicesConfig.class, SpringSecurityConfig.class };
+		//return new Class[] { SpringDBConfig.class, SpringServicesConfig.class, SpringSecurityConfig.class };
+		return new Class[] { SpringDBConfig.class, SpringServicesConfig.class };
 	}
 
 }
