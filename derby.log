@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Wed Dec 02 14:30:44 CST 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0151-6463-d7c0-0000027aa840 
-on database directory /home/amoxkali/Proyectos/estudio/architecture/fullStack/ccbk/localdb/cconv with class loader WebAppClassLoader=Curr conv@112f4f4 
+Wed Dec 02 17:32:42 CST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0151-650a-6f6e-000003453450 
+on database directory /home/amoxkali/Proyectos/estudio/architecture/fullStack/ccbk/localdb/cconv with class loader WebAppClassLoader=Curr conv@f8adc2 
 Loaded from file:/home/miguel/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_66-b17
