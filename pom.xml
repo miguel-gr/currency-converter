@@ -202,7 +202,7 @@
                 <version>${liquibase.version}</version>
                 <configuration>
                     <propertyFile>src/main/resources/liquibase.properties</propertyFile>
-                    <url>jdbc:mysql:${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/cconv</url>
+                    <url>jdbc:mysql:${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/cconv?createDatabaseIfNotExist=true</url>
                     <user>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user>
                     <password>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</password>
                 </configuration>
