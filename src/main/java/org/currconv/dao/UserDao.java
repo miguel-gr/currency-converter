@@ -15,7 +15,5 @@ public interface UserDao {
     void deleteUser(User user);
 
     List<User> findAllUsers();
-
-    boolean canLogin(User user);
  
 }

@@ -12,9 +12,8 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.currconv.entities.user.UserTypes;
 
-//import org.currconv.entities.user.User;
- 
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -29,38 +28,32 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public void registerGlobalAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
 			.passwordEncoder(passwordEncoder())
-            .usersByUsernameQuery(getUserQuery());
+            .usersByUsernameQuery(getUserQuery())
+            .authoritiesByUsernameQuery(getAuthoritiesQuery());
     }
 
     private String getUserQuery() {
-        return "SELECT login as username, passhash as password "
-                + "FROM usuario "
-                + "WHERE login = ?";
+        return "SELECT username as login, passhash as password, true "
+                + "FROM APP_USER "
+                + "WHERE username = ?";
+    }
+
+    /* At this moment all users have the same role */
+    private String getAuthoritiesQuery() {
+        return "SELECT username as login, '"+UserTypes.USER.name()+"' "
+                + "FROM APP_USER "
+                + "WHERE username = ?";
     }
 
     @Bean
 	public PasswordEncoder passwordEncoder(){
 		return new BCryptPasswordEncoder();
 	}
-    
-    /*@Bean
-    AuthenticationProvider customAuthenticationProvider() {
-        return null ;
-    }
 
-    @Bean   
-    UserDetailsService customUserDetailsService() {
-        return null;
-    }*/
-
+    /**
+     * Authorization is done at more fine grained levels
+     */
     public void configure(HttpSecurity http) throws Exception {
-        /*http.authorizeRequests()                                                              
-	        .antMatchers("/resources/**", "/signIn").permitAll()
-            .anyRequest().authenticated()
-                .and()
-            .formLogin()
-                .and()
-            .httpBasic();*/
     	http.authorizeRequests()
         .anyRequest().permitAll();
     }

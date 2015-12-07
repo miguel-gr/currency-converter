@@ -81,3 +81,34 @@ body {
     border-bottom: 0;
   }
 }
+
+.docsection {
+    margin-bottom: 60px;
+}
+
+.conversion {
+    text-align: center;
+    font-size: 200%
+}
+
+.conversion .from{
+  color: #0000AA;
+}
+
+.conversion .to{
+  color: #00AA00;
+}
+
+.recentConversions td {
+    font-size: 150%;
+    padding-right: 10px; 
+    padding-left: 10px; 
+}
+
+.recentConversions .from{
+  color: #000077;
+}
+
+.recentConversions .to{
+  color: #007700;
+}

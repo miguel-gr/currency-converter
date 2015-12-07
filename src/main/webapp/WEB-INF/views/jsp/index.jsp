@@ -15,7 +15,7 @@
   </head>
   <body ng-app="uizpApp">
 
-    <jsp:include page="header.jsp" >
+    <jsp:include page="comps/header.jsp" >
         <jsp:param name="active" value="index" />
     </jsp:include>
 
@@ -23,7 +23,7 @@
     <div ng-view=""></div>
     </div>
 
-    <jsp:include page="footer.jsp" /> 
+    <jsp:include page="comps/footer.jsp" /> 
 
     <spring:url value="/resources/core/js/bootstrap.min.js" var="bootstrapJs" />
     <spring:url value="/resources/core/js/angular.min.js" var="angularJs" />

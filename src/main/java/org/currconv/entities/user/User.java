@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -43,6 +45,7 @@ public class User implements java.io.Serializable {
 
 	@Id
 	@Column(name = "id", unique = true, nullable = false, precision = 5, scale = 0)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	public int getUserId() {
 		return this.userId;
 	}

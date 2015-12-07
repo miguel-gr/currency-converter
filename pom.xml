@@ -17,8 +17,9 @@
         <hibernate.version>4.2.11.Final</hibernate.version>
         <mysql.connector.version>5.1.31</mysql.connector.version>
         <testng.version>6.9.8</testng.version>
-        <flyway.version>3.2.1</flyway.version>
+        <liquibase.version>3.4.2</liquibase.version>
         <jodaTime.version>2.9.1</jodaTime.version>
+        <jackson.version>2.6.3</jackson.version>
 	</properties>
 
 	<dependencies>
@@ -74,6 +75,11 @@
             <version>${jodaTime.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.joda</groupId>
+            <artifactId>joda-money</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
             <version>1.5.4</version>
@@ -84,10 +90,30 @@
             <version>3.4</version>
         </dependency>
         <dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
-			<version>3.0.0</version>
-		</dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
 		<!-- provided -->
 		<dependency>
@@ -171,11 +197,11 @@
             </plugin>
             <!-- DB config management -->
             <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>${flyway.version}</version>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase.version}</version>
                 <configuration>
-                    <url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/cconv</url>
+                    <url>jdbc:mysql:${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/cconv</url>
                     <user>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user>
                     <password>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</password>
                 </configuration>
@@ -192,12 +218,21 @@
         <plugins>
             <!-- DB config management -->
             <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>${flyway.version}</version>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase.version}</version>
                 <configuration>
+                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
                     <url>jdbc:derby:../localdb/cconv;create=true</url>
-                </configuration>
+                </configuration>             
+               <executions>
+                 <execution>
+                   <phase>process-resources</phase>                                                                  
+                   <goals>
+                     <goal>update</goal>
+                   </goals>
+                 </execution>
+               </executions>
             </plugin>
         </plugins>
       </build>

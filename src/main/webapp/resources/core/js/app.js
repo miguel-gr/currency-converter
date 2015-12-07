@@ -16,18 +16,23 @@ angular
     //'ngSanitize'
   ])
   .config(function ($routeProvider) {
-    $routeProvider
+    /*$routeProvider
       .when('/', {
-        templateUrl: 'internalViews/main',
+        templateUrl: 'currencyRates',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/signIn', {
-        templateUrl: 'userViews/signIn',
-        controller: 'SignInCtrl',
-        controllerAs: 'signInCtrl'
+      .when('/userInfo', {
+        templateUrl: 'userViews/userInfo',
+        controller: 'AboutCtrl',
+        controllerAs: 'aboutCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'userViews/about',
+        controller: 'AboutCtrl',
+        controllerAs: 'aboutCtrl'
       })
       .otherwise({
         redirectTo: '/'
-      });
+      });*/
   });

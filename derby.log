@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Wed Dec 02 17:32:42 CST 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0151-650a-6f6e-000003453450 
-on database directory /home/amoxkali/Proyectos/estudio/architecture/fullStack/ccbk/localdb/cconv with class loader WebAppClassLoader=Curr conv@f8adc2 
-Loaded from file:/home/miguel/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+Sun Dec 06 22:40:58 CST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0151-7abe-1751-000001a8c7e0 
+on database directory C:\Users\compa\job\zooplus\app\localdb\cconv with class loader WebAppClassLoader=Curr conv@735b13 
+Loaded from file:/C:/Users/compa/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_66-b17
-user.dir=/home/amoxkali/Proyectos/estudio/architecture/fullStack/ccbk/currency-converter
-os.name=Linux
-os.arch=i386
-os.version=3.2.0-95-generic
+java.runtime.version=1.8.0_66-b18
+user.dir=C:\Users\compa\job\zooplus\app\bkzp
+os.name=Windows 7
+os.arch=x86
+os.version=6.1
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

@@ -34,9 +34,5 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
         Criteria criteria = createEntityCriteria();
         return (List<User>) criteria.list();
     }
-
-    public boolean canLogin(User user){
-        return true;
-    }
  
 }

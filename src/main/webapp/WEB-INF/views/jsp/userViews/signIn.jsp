@@ -15,7 +15,7 @@
     <link href="${mainCss}" rel="stylesheet" />
   </head>
   <body>
-    <jsp:include page="../header.jsp" >
+    <jsp:include page="../comps/header.jsp" >
         <jsp:param name="active" value="signIn" />
     </jsp:include> 
     <div class="container">
@@ -71,7 +71,8 @@
             <form:input type="password" class="form-control" path="passwordVer" placeholder="Password"/>
             <form:errors path="passwordVer" cssClass="alert alert-danger" element="div"/>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+          <button type="submit" class="btn btn-success">Submit</button>
         </form:form>
     </div>
 
@@ -79,6 +80,6 @@
     <spring:url value="/resources/core/js/bootstrap.min.js" var="bootstrapJs" />
     <script src="${bootstrapJs}"></script>
     
-    <jsp:include page="../footer.jsp" /> 
+    <jsp:include page="../comps/footer.jsp" /> 
 </body>
 </html>
