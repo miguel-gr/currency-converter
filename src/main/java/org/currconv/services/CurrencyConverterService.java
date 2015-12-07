@@ -1,10 +1,10 @@
 package org.currconv.services;
 
 import java.util.List;
-import org.currconv.entities.user.User;
+
+import org.currconv.entities.currencies.CurrencyConversion;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
-import org.currconv.entities.currencies.CurrencyConversion;
 
 public interface CurrencyConverterService {
 

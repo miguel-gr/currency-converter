@@ -1,7 +1,7 @@
 package org.currconv.dao;
 
 import java.util.List;
- 
+
 import org.currconv.entities.user.User;
  
 public interface UserDao {

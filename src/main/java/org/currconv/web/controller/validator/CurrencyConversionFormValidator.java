@@ -1,22 +1,15 @@
 package org.currconv.web.controller.validator;
 
-import javax.mail.internet.InternetAddress;
-
 import org.apache.commons.lang3.StringUtils;
-import org.currconv.entities.app.Locations;
-import org.currconv.entities.user.User;
-import org.joda.time.DateTime;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.currconv.entities.currencies.Currencies;
+import org.currconv.entities.currencies.CurrencyConversionForm;
+import org.joda.money.Money;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.Validator;
-import org.currconv.entities.currencies.CurrencyConversionForm;
-import org.joda.money.Money;
-import org.currconv.entities.currencies.Currencies;
-import java.lang.IllegalArgumentException;
-import java.lang.ArithmeticException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory; 
+import org.springframework.validation.Validator; 
 
 
 @Component

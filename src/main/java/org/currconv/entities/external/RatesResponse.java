@@ -1,10 +1,8 @@
 package org.currconv.entities.external;
 
-import org.joda.money.Money;
-import org.joda.money.CurrencyUnit;
-import java.util.Date;
-import java.util.Map;
 import java.math.BigDecimal;
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**

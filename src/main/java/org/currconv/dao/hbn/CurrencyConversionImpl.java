@@ -2,14 +2,14 @@ package org.currconv.dao.hbn;
 
 import java.util.Date;
 import java.util.List;
- 
+
+import org.currconv.dao.AbstractDao;
+import org.currconv.dao.CurrencyConversionDao;
+import org.currconv.entities.currencies.CurrencyConversion;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-import org.currconv.dao.AbstractDao;
-import org.currconv.dao.CurrencyConversionDao;
 import org.springframework.stereotype.Repository;
-import org.currconv.entities.currencies.CurrencyConversion;
 
 @Repository ("CurrencyConversionDao")
 public class CurrencyConversionImpl extends AbstractDao<Integer, CurrencyConversion> implements CurrencyConversionDao {

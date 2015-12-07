@@ -1,4 +1,4 @@
-package org.currconv.service.utils;
+package org.currconv.services.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

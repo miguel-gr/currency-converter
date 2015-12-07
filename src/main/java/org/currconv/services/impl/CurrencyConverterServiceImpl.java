@@ -1,32 +1,32 @@
 package org.currconv.services.impl;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Map;
+import java.math.RoundingMode;
 import java.net.URL;
-import org.currconv.dao.UserDao;
-import org.currconv.entities.user.User;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.currconv.dao.CurrencyConversionDao;
 import org.currconv.dao.RateDao;
 import org.currconv.entities.currencies.CurrencyConversion;
 import org.currconv.entities.currencies.Rate;
+import org.currconv.entities.external.RatesResponse;
 import org.currconv.services.CurrencyConverterService;
+import org.currconv.services.utils.ConversionUtils;
+import org.joda.money.CurrencyUnit;
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.joda.money.CurrencyUnit;
-import org.joda.money.Money;
-import org.apache.commons.collections4.CollectionUtils;
-import org.currconv.entities.external.RatesResponse;
+
 import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import java.io.IOException;
-import org.currconv.service.utils.ConversionUtils;
-import java.math.RoundingMode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service("currencyConverterService")
 @Transactional
@@ -36,9 +36,6 @@ public class CurrencyConverterServiceImpl implements CurrencyConverterService {
  
     @Autowired
     private CurrencyConversionDao currConvdao;
-
-    @Autowired
-    private UserDao userDao;
 
     @Autowired
     private RateDao rateDao;

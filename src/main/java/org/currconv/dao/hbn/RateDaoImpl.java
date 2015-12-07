@@ -1,13 +1,13 @@
 package org.currconv.dao.hbn;
 
 import java.util.List;
- 
-import org.joda.time.DateTime;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
-import org.currconv.entities.currencies.Rate;
+
 import org.currconv.dao.AbstractDao;
 import org.currconv.dao.RateDao;
+import org.currconv.entities.currencies.Rate;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
+import org.joda.time.DateTime;
 import org.springframework.stereotype.Repository;
 
 @Repository ("rateDao")

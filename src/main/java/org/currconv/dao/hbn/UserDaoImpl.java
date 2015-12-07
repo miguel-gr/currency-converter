@@ -1,12 +1,12 @@
 package org.currconv.dao.hbn;
 
 import java.util.List;
- 
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
-import org.currconv.entities.user.User;
+
 import org.currconv.dao.AbstractDao;
 import org.currconv.dao.UserDao;
+import org.currconv.entities.user.User;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 @Repository ("userDao")

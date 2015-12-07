@@ -1,34 +1,33 @@
 package org.currconv.web.controller;
 
-import java.util.List;
 import java.security.Principal;
-import org.springframework.stereotype.Controller;
-import org.currconv.entities.user.User;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.currconv.entities.currencies.Currencies;
 import org.currconv.entities.currencies.CurrencyConversion;
 import org.currconv.entities.currencies.CurrencyConversionForm;
+import org.currconv.entities.user.User;
+import org.currconv.entities.user.UserTypes;
+import org.currconv.services.CurrencyConverterService;
+import org.currconv.services.UserService;
 import org.currconv.web.controller.validator.CurrencyConversionFormValidator;
-import org.currconv.entities.currencies.Currencies;
-import org.springframework.ui.ModelMap;
-import org.springframework.ui.Model;
+import org.joda.money.CurrencyUnit;
+import org.joda.money.Money;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import javax.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
-import org.currconv.entities.user.UserTypes;
-import org.currconv.services.CurrencyConverterService;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.currconv.services.UserService; 
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.joda.money.CurrencyUnit;
-import org.joda.money.Money;
 
 /**
  *  Controller for general application functionality.
