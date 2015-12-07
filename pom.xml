@@ -201,11 +201,21 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>${liquibase.version}</version>
                 <configuration>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                    <driver>com.mysql.jdbc.Driver</driver>
                     <propertyFile>src/main/resources/liquibase.properties</propertyFile>
-                    <url>jdbc:mysql:${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/cconv?createDatabaseIfNotExist=true</url>
-                    <user>${env.OPENSHIFT_MYSQL_DB_USERNAME}</user>
+                    <url>jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/cconv?createDatabaseIfNotExist=true</url>
+                    <username>${env.OPENSHIFT_MYSQL_DB_USERNAME}</username>
                     <password>${env.OPENSHIFT_MYSQL_DB_PASSWORD}</password>
-                </configuration>
+                </configuration>        
+                <executions>
+                    <execution>
+                       <phase>process-resources</phase>                                                                  
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
       </build>
@@ -226,14 +236,14 @@
                     <propertyFile>src/main/resources/liquibase.properties</propertyFile>
                     <url>jdbc:derby:../localdb/cconv;create=true</url>
                 </configuration>             
-               <executions>
-                 <execution>
-                   <phase>process-resources</phase>                                                                  
-                   <goals>
-                     <goal>update</goal>
-                   </goals>
-                 </execution>
-               </executions>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>                                                                  
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
       </build>
